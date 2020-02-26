@@ -1,6 +1,9 @@
-import React from 'react';
-import './App.css';
-import { Player } from './logic/player';
+import React, { ReactNode } from 'react';
+import '../App.css';
+import ScoreDisplay from './ScoreDisplay';
+import CommitButton from './CommitButton';
+import UpgradeButton from './UpgradeButton';
+import { player } from '../App';
 
 class GameScreen extends React.Component {
     constructor(props: object) {
@@ -9,6 +12,17 @@ class GameScreen extends React.Component {
             needsUpdate: false
         };
     }
+
+    render(): ReactNode {
+        return (
+            <section>
+                hi
+                <ScoreDisplay {...{ screen: this, stars: player.stars }} />
+                <CommitButton  {...{ screen: this }} />
+                <UpgradeButton  {...{ screen: this }} />
+            </section>
+        );
+    }
 }
 
-export default App;
+export default GameScreen;

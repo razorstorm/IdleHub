@@ -1,7 +1,7 @@
 import { GameUtils } from './GameUtils';
 
 // StackOverFlow upgrade. Click to toggle whether to use SO, when using, have chance of reducing time between commits, but might lead to a 0 star commit due to "IM NOT ANSWERING YOUR QUESTION YOUR APPROACH IS BAD GO AND REWRITE YOUR ENTIRE COMPANY'S 100 GB CODE BASE TO USE MY APPROACH THATS MARGINALLY BETTER, etc"
-export class Player {
+class Player {
     stars: number;
     prestigeBonus: number;
     // by default one commit makes one star
@@ -22,9 +22,19 @@ export class Player {
         this.stars = Math.max(0, this.stars);
     }
 
+    getCommitUpgradeCost(): number {
+        return GameUtils.commitUpgradeCostScaling(this.commitUpgradeLevel);
+    }
+
+    canBuyCommitUpgrade() {
+        return this.stars >= this.getCommitUpgradeCost();
+    }
+
     buyCommitUpgrade() {
-        const cost = GameUtils.commitUpgradeCostScaling(this.commitUpgradeLevel);
-        this.loseStars(cost);
+        if (this.canBuyCommitUpgrade()) {
+            const cost = this.getCommitUpgradeCost();
+            this.loseStars(cost);
+        }
     }
 
     makeCommit() {
@@ -36,3 +46,5 @@ export class Player {
         this.stars = stars;
     }
 }
+
+export default Player;
