@@ -12,18 +12,20 @@ class UpgradeButton extends React.Component<Props> {
         super(props);
     }
 
-    // clickHandler() {
-    //     player.commitUpgradeLevel();
-    //     this.props.screen.forceUpdate();
-    // }
+    clickHandler() {
+        if (player.canBuyCommitUpgrade()) {
+            player.buyCommitUpgrade();
+            this.props.screen.forceUpdate();
+        }
+    }
 
     render(): ReactNode {
-        return (<div></div>)
-        // return (
-        //     <section onClick={this.clickHandler.bind(this)}>
-        //         Upgrade: {player.getCommitUpgradeCost()}
-        //     </section>
-        // );
+        const displayOpacity = player.canBuyCommitUpgrade() ? '100%' : '20%';
+        return (
+            <section className="upgradeButton" style={{ opacity: displayOpacity }} onClick={this.clickHandler.bind(this)}>
+                Upgrade your commits with {player.getCommitUpgradeCost()} stars!
+            </section>
+        );
     }
 }
 

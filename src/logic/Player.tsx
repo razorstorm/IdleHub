@@ -9,7 +9,7 @@ class Player {
     constructor() {
         this.stars = 0;
         this.prestigeBonus = 0;
-        this.commitUpgradeLevel = 0;
+        this.commitUpgradeLevel = 1;
     }
 
     loadFromSave(): Player {
@@ -34,16 +34,22 @@ class Player {
         if (this.canBuyCommitUpgrade()) {
             const cost = this.getCommitUpgradeCost();
             this.loseStars(cost);
+            this.commitUpgradeLevel += 1;
         }
     }
 
+    starsPerCommit(): number {
+        return GameUtils.commitUpgradeMultiplierScaling(this.commitUpgradeLevel);
+    }
+
     makeCommit() {
-        const starsToGain = GameUtils.commitUpgradeMultiplierScaling(this.commitUpgradeLevel);
+        const starsToGain = this.starsPerCommit();
         this.gainStars(starsToGain);
+        console.log(starsToGain, this.stars);
     }
 
     gainStars(stars: number) {
-        this.stars = stars;
+        this.stars += stars;
     }
 }
 
