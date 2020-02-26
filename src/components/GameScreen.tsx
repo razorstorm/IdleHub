@@ -9,12 +9,20 @@ import { player } from '../App';
 import { Container } from 'react-bootstrap';
 // localStorage.setItem('myData', data);
 
-class GameScreen extends React.Component {
+interface State {
+    percentage: number
+}
+
+interface Props {
+
+}
+
+class GameScreen extends React.Component<Props, State> {
     lastTrigger: Date
     constructor(props: object) {
         super(props);
         this.state = {
-            needsUpdate: false
+            percentage: 0
         };
         this.lastTrigger = new Date();
     }
@@ -22,11 +30,11 @@ class GameScreen extends React.Component {
     render(): ReactNode {
         return (
             <Container>
-                <ScoreDisplay {...{ screen: this, stars: player.stars }} />
-                <CommitButton {...{ screen: this }} />
-                <UpgradeButton {...{ screen: this }} />
-                <DevWorkDisplay {...{ screen: this, percentage: 0 }} />
-                <Devs {...{ screen: this, devs: player.devs }} />
+                <ScoreDisplay stars={player.stars} />
+                <CommitButton screen={this} />
+                <UpgradeButton screen={this} />
+                <DevWorkDisplay screen={this} percentage={this.state.percentage} />
+                <Devs screen={this} devs={player.devs} />
             </Container>
         );
     }
