@@ -12,6 +12,6 @@ export class GameUtils {
     }
 
     static devTimeScaling(currLevel: number): number {
-        return 10 / currLevel;
+        return 10 * 1000 / currLevel;
     }
 }

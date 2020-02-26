@@ -13,31 +13,11 @@ interface IState {
 }
 
 class Dev extends React.Component<Props, IState> {
-    lastTrigger: Date
     constructor(props: Props) {
         super(props);
         this.state = {
             clicked: false
         };
-        this.lastTrigger = new Date();
-    }
-
-    handleDevUpdate() {
-        const ticksNeeded = player.msPerDev() * 1000;
-        const newTime = new Date();
-        const frameDiff = newTime.getTime() - this.lastTrigger.getTime();
-        console.log(ticksNeeded);
-
-        if (frameDiff >= ticksNeeded) {
-            this.lastTrigger = newTime;
-            console.log(frameDiff);
-            player.gainStars(5);
-            this.props.screen.forceUpdate();
-        }
-    }
-
-    componentDidMount() {
-        setInterval(this.handleDevUpdate.bind(this), 16.6667)
     }
 
     clickHandler() {
