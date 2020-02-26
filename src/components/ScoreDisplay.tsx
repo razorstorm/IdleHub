@@ -16,7 +16,7 @@ class ScoreDisplay extends React.Component<Props> {
             <section>
                 Congratulations! Your followers have given you {this.props.stars} stars for your repo!
 
-                You are currently making {player.starsPerCommit()} stars per click!
+                You are currently making {player.starsPerCommit()} stars per commit!
             </section>
         );
     }

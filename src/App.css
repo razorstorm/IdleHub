@@ -42,4 +42,30 @@
     padding: 10px;
     width: auto;
     display: inline-block;
+    user-select: none;
+    transition: ease-in-out 0.4s;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.upgradeButton:hover {
+    background: darkgray;
+    transition: ease-in-out 0.4s;
+    color: white;
+}
+
+.animated {
+    animation: pop-up-keyframes 0.8s;
+}
+
+@keyframes pop-up-keyframes {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.4);
+    }
+    100% {
+        transform: scale(1);
+    }
 }

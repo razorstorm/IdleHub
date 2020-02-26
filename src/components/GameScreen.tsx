@@ -16,7 +16,6 @@ class GameScreen extends React.Component {
     render(): ReactNode {
         return (
             <section>
-                hi
                 <ScoreDisplay {...{ screen: this, stars: player.stars }} />
                 <CommitButton  {...{ screen: this }} />
                 <UpgradeButton  {...{ screen: this }} />
