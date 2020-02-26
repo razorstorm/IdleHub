@@ -3,6 +3,7 @@ import '../App.css';
 import ScoreDisplay from './ScoreDisplay';
 import CommitButton from './CommitButton';
 import UpgradeButton from './UpgradeButton';
+import Devs from './Devs';
 import { player } from '../App';
 
 class GameScreen extends React.Component {
@@ -17,8 +18,9 @@ class GameScreen extends React.Component {
         return (
             <section>
                 <ScoreDisplay {...{ screen: this, stars: player.stars }} />
-                <CommitButton  {...{ screen: this }} />
-                <UpgradeButton  {...{ screen: this }} />
+                <CommitButton {...{ screen: this }} />
+                <UpgradeButton {...{ screen: this }} />
+                <Devs {...{ screen: this, devs: player.devs }} />
             </section>
         );
     }

@@ -6,10 +6,12 @@ class Player {
     prestigeBonus: number;
     // by default one commit makes one star
     commitUpgradeLevel: number;
+    devs: number;
     constructor() {
         this.stars = 0;
         this.prestigeBonus = 0;
         this.commitUpgradeLevel = 1;
+        this.devs = 0;
     }
 
     loadFromSave(): Player {
@@ -20,6 +22,26 @@ class Player {
     loseStars(amount: number) {
         this.stars -= amount;
         this.stars = Math.max(0, this.stars);
+    }
+
+    getDevCost(): number {
+        return GameUtils.devCostScaling(this.devs);
+    }
+
+    canBuyDev() {
+        return this.stars >= this.getDevCost();
+    }
+
+    buyDev() {
+        if (this.canBuyDev()) {
+            const cost = this.getDevCost();
+            this.loseStars(cost);
+            this.devs += 1;
+        }
+    }
+
+    msPerDev() {
+        return GameUtils.devTimeScaling(this.devs);
     }
 
     getCommitUpgradeCost(): number {
