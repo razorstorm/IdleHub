@@ -1,7 +1,6 @@
 import React, { ReactNode } from 'react';
 import '../App.css';
-import { player } from '../App';
-import GameScreen from './GameScreen';
+import GameScreen, { player } from './GameScreen';
 
 interface Props {
     screen: GameScreen,
@@ -9,14 +8,16 @@ interface Props {
 }
 
 interface IState {
-    clicked: boolean
+    devClicked: boolean,
+    devLevelClicked: boolean,
 }
 
 class Dev extends React.Component<Props, IState> {
     constructor(props: Props) {
         super(props);
         this.state = {
-            clicked: false
+            devLevelClicked: false,
+            devClicked: false
         };
     }
 
@@ -25,24 +26,39 @@ class Dev extends React.Component<Props, IState> {
         this.props.screen.forceUpdate();
     }
 
-    onMouseUp() {
-        this.setState({ clicked: false });
+    buyDevLevelHandler() {
+        player.buyDevLevel();
+        this.props.screen.forceUpdate();
     }
 
-    onMouseDown() {
-        this.setState({ clicked: true });
+    onDevUp() {
+        this.setState({ devClicked: false });
+    }
+
+    onDevLevelUp() {
+        this.setState({ devLevelClicked: false });
+    }
+
+    onDevDown() {
+        this.setState({ devClicked: true });
+    }
+
+    onDevLevelDown() {
+        this.setState({ devLevelClicked: true });
     }
 
     render(): ReactNode {
-        const className = this.state.clicked ? 'animated upgradeButton' : 'upgradeButton';
+        const className = this.state.devClicked ? 'animated upgradeButton' : 'upgradeButton';
+        const levelClassName = this.state.devLevelClicked ? 'animated upgradeButton' : 'upgradeButton';
         const displayOpacity = player.canBuyDev() ? '100%' : '20%';
+        const devLevelDisplayOpacity = player.canBuyDevLevel() ? '100%' : '20%';
         return (
             <section>
-                <section>
-                    You have {player.devs} developers!
-                </section>
-                <section className={className} style={{ opacity: displayOpacity }} onAnimationEnd={this.onMouseUp.bind(this)} onMouseDown={this.onMouseDown.bind(this)} onClick={this.clickHandler.bind(this)}>
+                <section className={className} style={{ opacity: displayOpacity }} onAnimationEnd={this.onDevUp.bind(this)} onMouseDown={this.onDevDown.bind(this)} onClick={this.clickHandler.bind(this)}>
                     Buy dev for {player.getDevCost()}
+                </section>
+                <section className={levelClassName} style={{ opacity: devLevelDisplayOpacity }} onAnimationEnd={this.onDevLevelUp.bind(this)} onMouseDown={this.onDevLevelDown.bind(this)} onClick={this.buyDevLevelHandler.bind(this)}>
+                    Buy dev level for {player.getDevLevelCost()}
                 </section>
             </section>
 

@@ -5,13 +5,14 @@ import { ProgressBar, Col } from 'react-bootstrap';
 
 interface Props {
     screen: GameScreen,
-    percentage: number
+    savePercentage: number,
+    timeUntilSave: number
 }
 
 interface IState {
 }
 
-class DevWorkDisplay extends React.Component<Props, IState> {
+class SaveProgressDisplay extends React.Component<Props, IState> {
     constructor(props: Props) {
         super(props);
     }
@@ -20,10 +21,10 @@ class DevWorkDisplay extends React.Component<Props, IState> {
         return (
             <div {...{ fluid: "sm" }} className='container devBar'>
                 <section>
-                    {player.devs} devs making {player.starPerDev()} stars per {(player.msPerDev() / 1000).toFixed(2)} seconds.
+                    Time until AutoSave
                 </section>
                 <Col>
-                    <ProgressBar className="devProgress" now={this.props.percentage} label={`${this.props.percentage.toFixed(2)}%`} />
+                    <ProgressBar className="devProgress" now={this.props.savePercentage} label={`${this.props.timeUntilSave / 1000} seconds`} />
                 </Col>
             </div>
 
@@ -31,4 +32,4 @@ class DevWorkDisplay extends React.Component<Props, IState> {
     }
 }
 
-export default DevWorkDisplay;
+export default SaveProgressDisplay;

@@ -1,7 +1,6 @@
 import React, { ReactNode } from 'react';
 import '../App.css';
-import { player } from '../App';
-import GameScreen from './GameScreen';
+import GameScreen, { player } from './GameScreen';
 
 interface Props {
     screen: GameScreen

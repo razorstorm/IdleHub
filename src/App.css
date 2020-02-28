@@ -73,3 +73,7 @@
 .devBar {
     max-width: 768px;
 }
+
+.devProgress .progress-bar {
+    transition: width .1s ease;
+}

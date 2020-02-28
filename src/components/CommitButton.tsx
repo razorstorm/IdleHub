@@ -1,7 +1,6 @@
 import React, { ReactNode } from 'react';
 import '../App.css';
-import { player } from '../App';
-import GameScreen from './GameScreen';
+import GameScreen, { player } from './GameScreen';
 
 interface Props {
     screen: GameScreen
@@ -20,13 +19,11 @@ class CommitButton extends React.Component<Props, IState> {
     }
 
     clickHandler() {
-        console.log('ASDF');
         player.makeCommit();
         this.props.screen.forceUpdate();
     }
 
     onMouseUp() {
-        console.log('asfd');
         this.setState({ clicked: false });
     }
 

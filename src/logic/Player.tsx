@@ -1,17 +1,35 @@
 import { GameUtils } from './GameUtils';
 
 // StackOverFlow upgrade. Click to toggle whether to use SO, when using, have chance of reducing time between commits, but might lead to a 0 star commit due to "IM NOT ANSWERING YOUR QUESTION YOUR APPROACH IS BAD GO AND REWRITE YOUR ENTIRE COMPANY'S 100 GB CODE BASE TO USE MY APPROACH THATS MARGINALLY BETTER, etc"
+interface PlayerData {
+    stars: number;
+    prestigeBonus: number;
+    commitUpgradeLevel: number;
+    devs: number;
+}
+
 class Player {
     stars: number;
     prestigeBonus: number;
     // by default one commit makes one star
     commitUpgradeLevel: number;
     devs: number;
+    devLevel: number;
     constructor() {
         this.stars = 0;
         this.prestigeBonus = 0;
         this.commitUpgradeLevel = 1;
         this.devs = 0;
+        this.devLevel = 0;
+    }
+
+    serialize(): string {
+        return JSON.stringify(this);
+    }
+
+    deserialize(data: string) {
+        const playerData: PlayerData = JSON.parse(data);
+        Object.assign(this, playerData);
     }
 
     loadFromSave(): Player {
@@ -28,6 +46,10 @@ class Player {
         return GameUtils.devCostScaling(this.devs);
     }
 
+    getDevLevelCost(): number {
+        return GameUtils.devLevelCostScaling(this.devLevel);
+    }
+
     canBuyDev() {
         return this.stars >= this.getDevCost();
     }
@@ -40,8 +62,24 @@ class Player {
         }
     }
 
+    canBuyDevLevel() {
+        return this.stars >= this.getDevLevelCost();
+    }
+
+    buyDevLevel() {
+        if (this.canBuyDevLevel()) {
+            const cost = this.getDevLevelCost();
+            this.loseStars(cost);
+            this.devLevel += 1;
+        }
+    }
+
     msPerDev() {
         return GameUtils.devTimeScaling(this.devs);
+    }
+
+    starPerDev() {
+        return GameUtils.devStarScaling(this.devLevel);
     }
 
     getCommitUpgradeCost(): number {

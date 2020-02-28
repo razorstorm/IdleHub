@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 import '../App.css';
-import { player } from '../App'
+import { player } from './GameScreen';
 
 interface Props {
     stars: number
