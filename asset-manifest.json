@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/IdleHub/static/css/main.8bf09517.chunk.css",
+    "main.js": "/IdleHub/static/js/main.dc953239.chunk.js",
+    "main.js.map": "/IdleHub/static/js/main.dc953239.chunk.js.map",
+    "runtime-main.js": "/IdleHub/static/js/runtime-main.7e3f7022.js",
+    "runtime-main.js.map": "/IdleHub/static/js/runtime-main.7e3f7022.js.map",
+    "static/js/2.ac7e234d.chunk.js": "/IdleHub/static/js/2.ac7e234d.chunk.js",
+    "static/js/2.ac7e234d.chunk.js.map": "/IdleHub/static/js/2.ac7e234d.chunk.js.map",
+    "index.html": "/IdleHub/index.html",
+    "precache-manifest.1e875b5ad537b78b856fbd51a8e6d1ac.js": "/IdleHub/precache-manifest.1e875b5ad537b78b856fbd51a8e6d1ac.js",
+    "service-worker.js": "/IdleHub/service-worker.js",
+    "static/css/main.8bf09517.chunk.css.map": "/IdleHub/static/css/main.8bf09517.chunk.css.map",
+    "static/js/2.ac7e234d.chunk.js.LICENSE.txt": "/IdleHub/static/js/2.ac7e234d.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.7e3f7022.js",
+    "static/js/2.ac7e234d.chunk.js",
+    "static/css/main.8bf09517.chunk.css",
+    "static/js/main.dc953239.chunk.js"
+  ]
+}
