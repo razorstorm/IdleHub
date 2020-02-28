@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "72a06868ac7f6d7a85418fe01cfd248c",
+    "revision": "ff751bab259222a2ed6f021fa6438fc7",
     "url": "/IdleHub/index.html"
   },
   {
