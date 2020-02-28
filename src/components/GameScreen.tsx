@@ -88,7 +88,7 @@ class GameScreen extends React.Component<Props, State> {
     }
 
     componentDidMount() {
-        setInterval(this.gameTick.bind(this), 100)
+        setInterval(this.gameTick.bind(this), 50)
     }
 }
 
