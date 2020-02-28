@@ -7,10 +7,6 @@ interface Props {
 }
 
 class ScoreDisplay extends React.Component<Props> {
-    constructor(props: Props) {
-        super(props);
-    }
-
     render(): ReactNode {
         return (
             <section>

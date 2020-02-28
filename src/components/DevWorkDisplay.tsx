@@ -12,10 +12,6 @@ interface IState {
 }
 
 class DevWorkDisplay extends React.Component<Props, IState> {
-    constructor(props: Props) {
-        super(props);
-    }
-
     render(): ReactNode {
         let className = 'devProgress';
         let animated = true;

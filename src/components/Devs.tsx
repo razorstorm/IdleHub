@@ -55,10 +55,10 @@ class Dev extends React.Component<Props, IState> {
         return (
             <section>
                 <section className={className} style={{ opacity: displayOpacity }} onAnimationEnd={this.onDevUp.bind(this)} onMouseDown={this.onDevDown.bind(this)} onClick={this.clickHandler.bind(this)}>
-                    Buy dev for {player.getDevCost()}
+                    Buy dev for {player.getDevCost().toFixed(2)}
                 </section>
                 <section className={levelClassName} style={{ opacity: devLevelDisplayOpacity }} onAnimationEnd={this.onDevLevelUp.bind(this)} onMouseDown={this.onDevLevelDown.bind(this)} onClick={this.buyDevLevelHandler.bind(this)}>
-                    Buy dev level for {player.getDevLevelCost()}
+                    Buy dev level for {player.getDevLevelCost().toFixed(2)}
                 </section>
             </section>
 

@@ -7,10 +7,6 @@ interface Props {
 }
 
 class UpgradeButton extends React.Component<Props> {
-    constructor(props: Props) {
-        super(props);
-    }
-
     clickHandler() {
         if (player.canBuyCommitUpgrade()) {
             player.buyCommitUpgrade();

@@ -35,7 +35,8 @@ class GameScreen extends React.Component<Props, State> {
         this.lastSaved = new Date();
     }
 
-    componentWillMount() {
+    componentDidMount() {
+        setInterval(this.gameTick.bind(this), 50);
         const data = localStorage.getItem('playerData');
         if (data) {
             player.deserialize(data);
@@ -85,10 +86,6 @@ class GameScreen extends React.Component<Props, State> {
 
     saveGame() {
         localStorage.setItem('playerData', player.serialize());
-    }
-
-    componentDidMount() {
-        setInterval(this.gameTick.bind(this), 50)
     }
 }
 
