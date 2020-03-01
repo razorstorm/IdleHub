@@ -28,7 +28,7 @@ class DevWorkDisplay extends React.Component<Props, IState> {
         return (
             <div {...{ fluid: "sm" }} className='container devBar'>
                 <section>
-                    {player.devs} devs making {player.starPerDev()} stars per {(player.msPerDev() / 1000).toFixed(2)} seconds.
+                    {player.devs} devs making {player.starPerDev().toFixed(2)} stars per {(player.msPerDev() / 1000).toFixed(2)} seconds.
                 </section>
                 <Col>
                     <ProgressBar animated={animated} className={className} now={displayPercent} label={label} />

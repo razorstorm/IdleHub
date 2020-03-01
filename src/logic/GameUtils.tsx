@@ -21,6 +21,11 @@ export class GameUtils {
     }
 
     static devStarScaling(currLevel: number): number {
-        return Math.ceil(1.4 ** (currLevel - 1));
+        // return Math.ceil(1.4 ** (currLevel - 1));
+        if (currLevel < 1) {
+            return 0;
+        }
+        return Math.log(currLevel + 1) / Math.log(1.1);
+        // return Math.log(currLevel);
     }
 }

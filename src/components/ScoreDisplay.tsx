@@ -10,9 +10,9 @@ class ScoreDisplay extends React.Component<Props> {
     render(): ReactNode {
         return (
             <section>
-                Congratulations! Your followers have given you {this.props.stars} stars for your repo!
+                Congratulations! Your followers have given you {this.props.stars.toFixed(2)} stars for your repo!
 
-                You are currently making {player.starsPerCommit()} stars per commit!
+                You are currently making {player.starsPerCommit().toFixed(2)} stars per commit!
             </section>
         );
     }

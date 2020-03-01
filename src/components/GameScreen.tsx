@@ -8,6 +8,7 @@ import SaveProgressDisplay from './SaveProgressDisplay';
 import Devs from './Devs';
 import { Container } from 'react-bootstrap';
 import Player from '../logic/Player';
+import StackOverflow from './StackOverflow';
 
 export const player: Player = new Player();
 
@@ -52,6 +53,7 @@ class GameScreen extends React.Component<Props, State> {
                 <DevWorkDisplay screen={this} percentage={this.state.percentage} />
                 <SaveProgressDisplay screen={this} savePercentage={this.state.savePercentage} timeUntilSave={this.state.timeUntilSave} />
                 <Devs screen={this} devs={player.devs} />
+                <StackOverflow screen={this} devs={player.devs} />
             </Container>
         );
     }

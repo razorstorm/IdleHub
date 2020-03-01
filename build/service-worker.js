@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/IdleHub/precache-manifest.1e875b5ad537b78b856fbd51a8e6d1ac.js"
+  "/IdleHub/precache-manifest.0ccffc58d60f977d0c5fef91eb93353d.js"
 );
 
 self.addEventListener('message', (event) => {

@@ -15,12 +15,14 @@ class Player {
     commitUpgradeLevel: number;
     devs: number;
     devLevel: number;
+    useSO: boolean;
     constructor() {
         this.stars = 0;
         this.prestigeBonus = 0;
         this.commitUpgradeLevel = 1;
         this.devs = 0;
         this.devLevel = 0;
+        this.useSO = false;
     }
 
     serialize(): string {
@@ -109,7 +111,16 @@ class Player {
     }
 
     gainStars(stars: number) {
-        this.stars += stars;
+        let multiplier = 1;
+        if (this.useSO) {
+            multiplier = Math.random() * 8 - 4
+        }
+        this.stars += stars * multiplier;
+        this.stars = Math.max(0, this.stars);
+    }
+
+    toggleStackOverflow() {
+        this.useSO = !this.useSO;
     }
 }
 
